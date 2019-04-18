@@ -1,14 +1,14 @@
 #!/bin/bash
 
-X264_VERSION="snapshot-20181206-2245-stable"
-SOURCE="x264-$X264_VERSION"
+#X264_VERSION="snapshot-20181206-2245-stable"
+SOURCE="x264_latest/x264"
 SHELL_PATH=$(pwd)
 X264_PATH=$SHELL_PATH/$SOURCE
 #输出路径
 PREFIX=$SHELL_PATH/x264_android
 
 cd $X264_PATH
-X264_CONFIGURE_FLAGS="--enable-static  --disable-shared --enable-pic --disable-cli"
+X264_CONFIGURE_FLAGS="--disable-static --enable-shared --enable-pic --disable-cli --enable-asm"
 
 PREFIX_ARCH=$PREFIX/$ABI
 rm -rf $PREFIX_ARCH
@@ -22,7 +22,6 @@ CC=$CC $X264_PATH/configure \
 	--prefix=$PREFIX_ARCH \
 	--host=$TOOLCHAINS_PREFIX \
 	$X264_CONFIGURE_FLAGS \
-	$EXTRA_CONFIGURE_FLAGS \
 	--extra-cflags="$EXTRA_CFLAGS $X264_CFLAGS" \
 	--extra-ldflags=""
 

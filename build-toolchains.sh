@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ANDROID_API_VERSION=18
 NDK_TOOLCHAIN_ABI_VERSION=4.9
@@ -160,4 +160,5 @@ else
 	echo $ABI
 fi
 
+echo "build-toolchains.sh execute complete."
 cd $CWD
